@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Register {% endblock %}
+{%  block register %}
+    <link href="{% static 'membership_css_.css' %}">
+    {% csrf_token %}
+
+
+    <div class="container-fluid" style="background-color: #777777">
+        <div class="row">
+            <div class="col-sm-12 col-md-7">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h4>Register Here To Create Your New Account </h4>
+                        {% if error_message %}
+                            <p><strong>{{ error_message }}</strong></p>
+                        {% endif %}
+                        <form action=" " style="border:1px solid #ccc" method="post">
+
+                            {% include 'form_temp.html' %}
+                            <label>
+                                <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+                            </label>
+                            <div class="clearfix">
+                                <button type="button" class="cancelbtn ">Cancel</button>
+                                <button type="submit" class="signupbtn">Sign Up</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block store %}
+    <form action="{% url 'schooldiary:subject' %}" method="post">
+        {% csrf_token %}
+        <label for="subject" class="sr-only">Subject</label>
+        <input type="text" id="subject" class="form-control" placeholder="Input Subject" required autofocus>
+        {% for subject_name in Subject %}
+            {% csrf_token %}
+            <div class="container">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <span class="text-danger-small">{{ subject_name.errors }}</span>
+                </div>
+                <label class="control-label col-sm-2">
+                    {{ subject_name.label_tag }}
+                </label>
+                <div class="col-sm-10">{{ subject_name }}</div>
+            </div>
+        {% endfor %}
+        <button class="btn btn-lg btn-primary btn-block" role="button" type="submit">Submit</button>
+    </form>
+{% endblock %}
